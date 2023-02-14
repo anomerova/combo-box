@@ -1,4 +1,18 @@
+const svgrPlugin = require('vite-plugin-svgr');
+
 module.exports = {
+  async viteFinal(config) {
+    config.plugins = [
+      ...config.plugins,
+      svgrPlugin({
+        svgrOptions: {
+          icon: true,
+        },
+      })
+    ];
+
+    return config;
+  },
   stories: ['../src/**/*.stories.mdx', '../src/**/*.stories.tsx'],
   addons: [
     '@storybook/addon-links',
